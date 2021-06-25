@@ -39,6 +39,9 @@ const UpdateDom = function(providedData = data){
         main.appendChild(element);
     });
 }
+function formatToCurrency(amount) {
+    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 // double balance
 const doubleBalance = function(){
     data = data.map(user =>{
@@ -50,6 +53,16 @@ const filterRich = function(){
     data = data.filter((user) => user.balance > 50000);
     UpdateDom();
 }
+const totalBalance = function(){
+    const wealth = data.reduce((acc,user) => 
+        (acc = acc + user.balance),0
+    );
+    console.log(wealth);
+
+    const wealthEl = document.createElement('div');
+    wealthEl.innerHTML = `<h2>Total Balance: <strong>${formatToCurrency(wealth)}</strong></h2>`;
+    main.appendChild(wealthEl);
+};
 getRandomUser();
 
 btnAddUser.addEventListener('click' , getRandomUser);
