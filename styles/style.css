@@ -70,4 +70,12 @@ h2{
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.users{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
